@@ -1,0 +1,69 @@
+.product__view__modal
+    position: fixed
+    z-index: 999999
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    overflow: auto
+    background-color: rgb(0, 0, 0)
+    background-color: rgba(0, 0, 0, 0.6)
+    opacity: 0
+    visibility: hidden
+
+    &__overlay
+        position: fixed
+
+        width: 100%
+        height: 100%
+
+    &.active
+        opacity: 1
+        visibility: visible
+
+    &__content
+        margin: auto
+        padding: 2rem
+        background-color: $main-bg
+        max-width: 600px
+        max-height: 500px
+        overflow: hidden
+        position: relative
+        opacity: 0
+        font-size: 1rem
+        transform: translateY(-200px)
+        transition: opacity .5s ease
+
+        .product
+            &__images
+                width: 45%
+                .product-description
+                    padding-top: 0
+                    margin: 0
+                    height: 250px
+                    transform: translateY(-35px)
+                    &__title
+                        font-size: 1.2rem
+                        font-weight: 600
+
+                    &__content
+                        font-size: 1.1rem
+                        line-height: 1.6rem
+                        transform: translateY(-20px)
+                    &__toggle
+                        bottom: -2px
+            &__info
+                position: sticky
+                top: 0
+        &__close
+            position: absolute
+            top: 0
+            right: 0
+            button
+                border-radius: 0
+
+    &.active &__content
+        opacity: 1
+        transform: translateY(40px)
+        @include tablet
+            transform: translateY(100px)

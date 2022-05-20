@@ -1,0 +1,19 @@
+.scrollTop
+    background-color: $main-color
+    border-radius: 100px
+    padding: 10px 17px
+    position: fixed
+    right: 2%
+    bottom: 3%
+    font-size: 30px
+    color: #fff
+    cursor: pointer
+    visibility: hidden
+    z-index: 99
+    &:hover
+        opacity: 0.9
+
+    @include tablet
+        font-size: 20px
+    &.active
+        visibility: visible

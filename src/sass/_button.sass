@@ -1,0 +1,48 @@
+.btn
+    border: 0
+    outline: 0
+    color: $btn-main-color
+    font-size: 1.2rem
+    font-weight: 600
+    text-transform: uppercase
+    cursor: pointer
+    overflow: hidden
+    position: relative
+
+    &__txt,
+    &__icon
+        display: block
+        transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+
+    &__txt
+        padding: 1rem 1.5rem
+        @include mobile
+            font-size: 0.2rem
+            padding: 5px 10px
+
+    &__icon
+        @include flex(center, center)
+        font-size: 1.5rem
+        position: absolute
+        left: 0
+        top: 0
+        height: 100%
+        width: 100%
+        transform: translateX(-100%)
+
+    &-animate:hover &__txt
+        transform: translateX(100%)
+
+    &-animate:hover &__icon
+        transform: translateX(0)
+
+    &-sm
+        font-size: 0.8rem
+
+    &-md
+        font-size: 1.4rem
+
+    &-sm &__txt,&__icon
+        padding: 0.7rem 1.5rem
+    &-block
+        width: 100%
