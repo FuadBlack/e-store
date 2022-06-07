@@ -11,11 +11,11 @@ import {
 
 const CartItem = (props) => {
   const dispatch = useDispatch();
-
   const item = props.item;
 
   const updateAmount = (opt) => {
     if (opt === "-") {
+      dispatch(increaseItem({ ...item, amount: item.amount - 1 }));
     }
     if (opt === "+") {
       dispatch(

@@ -76,25 +76,31 @@ export const cartItemSlice = createSlice({
         (e) =>
           e.slug === item.slug && e.color === item.color && e.size === item.size
       );
-      if (itemExist.amount === 0) {
+
+      if (itemExist.length > 0) {
+        state.value = state.value.filter(
+          (e) =>
+            e.slug !== item.slug ||
+            e.color !== item.color ||
+            e.size !== item.size
+        );
+
         state.value = [
-          ...state.value.filter(
-            (e) =>
-              e.slug !== item.slug ||
-              e.color !== item.color ||
-              e.size !== item.size
-          ),
+          ...state.value,
+          {
+            ...item,
+            id: itemExist[0].id,
+            amount: item.amount,
+          },
         ];
-      } else {
-        state.value = [
-          ...state.value.filter(
-            (e) =>
-              e.slug !== item.slug ||
-              e.color !== item.color ||
-              e.size !== item.size
-          ),
-          itemExist,
-        ];
+      }
+      if (item.amount === 0) {
+        state.value = state.value.filter(
+          (e) =>
+            e.slug !== item.slug ||
+            e.color !== item.color ||
+            e.size !== item.size
+        );
       }
       localStorage.setItem(
         "cartItems",
